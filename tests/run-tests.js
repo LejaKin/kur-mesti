@@ -65,7 +65,7 @@ Data: ${new Date().toISOString().slice(0, 10)} · Modelis: claude-opus-5-5 · Ta
 
 | # | ${textMode ? "Užklausa" : "Nuotrauka"} | AI atsakymas | Teisingai pagal VASA | Sutapo | Laikas, s | Pastaba |
 |---|---|---|---|---|---|---|
-${rows.map((r, i) => `| ${i + 1} | ${r.id} | ${r.ai.replace(/\|/g, "/")} | ${r.expected} | ${r.match ? "✅" : "❌"} | ${r.s} | ${r.note} |`).join("\n")}
+${rows.map((r, i) => `| ${i + 1} | ${r.id} | ${r.ai.replace(/\|/g, "/")} | ${r.expected.replace(/\|/g, " arba ")} | ${r.match ? "✅" : "❌"} | ${r.s} | ${r.note} |`).join("\n")}
 `;
 fs.mkdirSync("docs", { recursive: true });
 const out = textMode ? "docs/testavimo-lentele-tekstas.md" : "docs/testavimo-lentele.md";
