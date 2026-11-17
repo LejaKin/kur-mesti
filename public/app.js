@@ -5,6 +5,7 @@
 // ---------- Konteineriai, kuriuos vartotojas gali turėti ----------
 const BIN_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M8 6V4h8v2M5 6l1 14h12l1-14"/></svg>';
 const PIN_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>';
+const DROP_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/></svg>';
 const BAG_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 8h12l-1 13H7L6 8z"/><path d="M9 8c0-3 1-5 3-5s3 2 3 5"/></svg>';
 
 const BINS = {
@@ -19,6 +20,7 @@ const BINS = {
   // Visada prieinami / ne vartotojo pasirinkimas:
   misrios:   { name: "Mišrių atliekų konteineris", color: "#4B5563" },
   oranzinis: { name: "Oranžinis maišelis → mišrių atliekų konteineris", color: "#EA7317", icon: BAG_ICON },
+  kriaukle:  { name: "Išpilkite į kriauklę", color: "#2A6F9E", icon: DROP_ICON },
   vieta:     { name: "Speciali surinkimo vieta", color: "#0F6E66", icon: PIN_ICON },
 };
 const SELECTABLE = [
@@ -79,6 +81,8 @@ function destination(cat, my) {
       return { bin: "vieta", where: "Pavojingų atliekų surinkimas", note: `${PICKUP}. Arba: ${DGASA}. Į jokį konteinerį mesti negalima.`, links: [L.pickup, L.pavojingos] };
     case "vaistai":
       return { bin: "vieta", where: "Vaistinė", note: "Seni ir nereikalingi vaistai nemokamai priimami vaistinėse. Neškite visą pakuotę su likučiu – neišpilkite ir neišmeskite į konteinerį.", links: [["VASA: medikamentai", "https://vasa.lt/medikamentai"]] };
+    case "skystis":
+      return { bin: "kriaukle", note: "Tik neriebius skysčius (gėrimai, sirupas, sultys, pienas). Aliejaus ir riebalų į kriauklę pilti negalima – jie užkemša vamzdžius; nedidelį riebų likutį sugerkite popieriniu rankšluosčiu ir dėkite į maisto atliekas.", links: [["VASA: aliejus", "https://vasa.lt/kepimo-aliejaus-atliekos"]] };
     case "uzstato": {
       return { bin: "vieta", where: "Taromatas parduotuvėje", note: "Pakuotę su užstato ženklu grąžinkite į taromatą ir atgausite užstatą. Jei ženklo nėra – plastiką ir skardinę į geltoną (ar bendrą pakuočių), stiklą – į žalią konteinerį." };
     }
@@ -164,6 +168,7 @@ const CATALOG = [
   ["Mediena, lentos", "didziosios", "", "medis"],
   ["Padangos", "padangos", "", "ratai"],
   ["Žvakė stiklinėje", "misrios", "Stiklinę su vašku meskite į mišrias – vaško išgremžti nereikia (stiklinių indų į žalią negalima). Metalinį dangtelį – į geltoną.", "žvakė žvakidė vaškas"],
+  ["Sirupo, sulčių, gėrimo likutis", "skystis", "Išpilkite, butelį meskite pagal medžiagą (stiklas – žalias, plastikas – geltonas). Plauti nebūtina.", "sirupas sultys pienas gėrimas skystis"],
   ["Atvėsę fejerverkai", "misrios", "Tik visiškai atvėsę.", "petardos"],
 ];
 
@@ -228,7 +233,7 @@ function itemCard(it) {
   <article class="item">
     <div class="bin ${b.light ? "light" : ""}" style="background:${b.color}">
       ${swatch(d.bin)}
-      <div><div class="label">${d.missing ? "Reikia" : "Meskite į"}</div><div class="where">${esc(where)}</div></div>
+      <div><div class="label">${d.missing ? "Reikia" : d.bin === "kriaukle" ? "Turinys" : "Meskite į"}</div><div class="where">${esc(where)}</div></div>
     </div>
     <div class="body">
       ${low ? `<span class="low">AI nėra tikras – patikrinkite</span>` : ""}

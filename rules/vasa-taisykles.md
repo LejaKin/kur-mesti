@@ -68,6 +68,14 @@ NEGALIMA: virtuvinės kempinėlės ir šluostės; žurnalai, laikraščiai, kepi
 
 Šaltinis: vasa.lt/maisto-atliekos, VASA atmintinė
 
+## 5a. Skysto maisto likučiai
+
+- VASA: skysto maisto (pieno, aliejaus, sriubos, padažų, grietinės) į oranžinius maišelius ir maisto konteinerius mesti NEGALIMA.
+- VASA: maistinio aliejaus ir riebalų negalima pilti į kriauklę ar tualetą – jie užkemša vamzdynus. Aliejus → aliejaus konteineris; labai mažą kiekį sugerkite popieriniu rankšluosčiu → maisto atliekos.
+- Neriebūs skysčiai (gėrimai, sirupas, sultys, pienas, arbata) – išpilkite į kriauklę. **[ne VASA – bendra praktika; VASA tiesiogiai nemini, bet draudžia tik riebalus]**
+- Riebūs skysčiai (riebi sriuba, padažai) – riebalų į kriauklę nepilkite; nedidelį kiekį sugerkite popieriumi → maisto atliekos.
+- Pakuotė po išpylimo: VASA – „Pakuočių plauti nebūtina, užtenka išpilti skysčius“. Likučiai ant sienelių netrukdo.
+
 ## 6. Mišrios komunalinės atliekos – mišrių atliekų konteineris
 
 GALIMA: atliekos, likusios po rūšiavimo; asmens higienos reikmenys (skutimosi peiliukai, dantų šepetėliai, kempinės); sauskelnės; tualetinis popierius; indų duženos (porcelianas, keramika, stikliniai indai); sulūžę žaislai (be baterijų); flomasteriai, spalvoti pieštukai; cigarečių nuorūkos; panaudoti fejerverkai (tik visiškai atvėsę); blizgus ar plastiku dengtas dovanų popierius; servetėlės, nosinaitės; kepimo popierius; virtuvinės kempinėlės ir šluostės.
@@ -212,7 +220,8 @@ Didelių gabaritų atliekų surinkimo aikštelės Vilniuje: Pilaitės pr. 50; Li
 | Nosies purškalas, akių lašai, sirupas (vaistas) | vaistinė – visas buteliukas su likučiu | VASA: vaistų negalima išmesti ar išpilti; medikamentų į geltoną negalima |
 | Šnypščiųjų vitaminų / maisto papildų tūbelė | likusios tabletės – maisto (oranžinis maišelis); tuščia tūbelė su dangteliu – geltonas / bendras | VASA: pasibaigę vitaminai ir maisto papildai – į oranžinį maišelį (ne į vaistinę); plastikinė pakuotė – į geltoną |
 | Majonezas, padažas | maisto? NE – skystas maistas į maisto negalima; tirštus likučius išgremžkite į mišrias **[bendra praktika]**, pakuotę – į geltoną | |
-| Pienas, sriuba (skystis) | išpilti į kanalizaciją **[bendra praktika]**, pakuotė – geltonas | VASA: skysto maisto į maisto atliekas negalima |
+| Pienas, sultys, sirupas (likutis) | skystį į kriauklę **[bendra praktika]**; pakuotė pagal medžiagą, plauti nebūtina | VASA: skysto maisto į maisto atliekas negalima |
+| Riebi sriuba, padažas | riebalų į kriauklę negalima; mažą kiekį sugerti popieriumi → maisto | VASA: aliejus ir riebalai užkemša vamzdynus |
 | Stiklinis butelis su užstato ženklu | taromatas | |
 | Žvakė stiklinėje (su vaško likučiais) | stiklinė su vašku – mišrios (vaško išgremžti nereikia); metalinis dangtelis – geltonas / bendras; guminis tarpiklis – mišrios | VASA: stiklinių indų į žalią negalima – žvakės stiklinė yra dekoratyvus indas, ne maisto ar gėrimų pakuotė. Švarią stiklinę verta panaudoti dar kartą. **[žvakių VASA atskirai nemini]** |
 | Žvakės, kamštis, guma, guminiai tarpikliai | mišrios **[bendra praktika]** | |

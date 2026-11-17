@@ -36,6 +36,13 @@ Vartotoja nufotografavo nosies purškalą ir šnypščiųjų vitaminų tūbelę,
 
 **Vartotojos pasiūlymas ateičiai:** atsakymas „jei tuščia – čia, jei pilna – ten“ arba klausimų skiltis, pvz. „o jei pakuotė pilna?“. Sprendimas: pirmiausia pristatyti prašytą MVP, o tai pateikti kaip kitą žingsnį.
 
+## 8. Kartojimasis ir skysčiai: AI turėjo surasti faktus
+Vartotoja pastebėjo, kad skiltys „Kaip“ ir „Kodėl“ kartoja tą patį, ir paklausė apie sirupą:
+> „Ar likučiai ant butelio sienelių – nieko tokio pagal taisykles? Ar tikrai visus skysčius maistinius galima šalinti į kanalizaciją? Aš nežinau – surask ir patikslink.“
+
+**Ką AI rado:** VASA atmintinė – „Pakuočių plauti nebūtina, užtenka išpilti skysčius“ (likučiai ant sienelių netrukdo). VASA draudžia į kriauklę pilti tik aliejų ir riebalus; apie kitus skysčius VASA ir „Vilniaus vandenys“ tiesiogiai nieko nesako, todėl tai pažymėta kaip „[ne VASA – bendra praktika]“. Be to, AI pats pastebėjo trečią klaidą: sirupo kortelės antraštė buvo „Mišrių atliekų konteineris“, o tekstas liepė pilti į kriauklę.
+**Taisymas:** (1) AI nurodyme kiekvienam laukui apibrėžta paskirtis: „Paruošimas“ – tik veiksmai, „Kodėl“ – tik priežastis, be kartojimo; (2) nauja kategorija „Išpilkite į kriauklę“ neriebiems skysčiams, o riebūs skysčiai sugeriami popieriumi ir keliauja į maisto atliekas; (3) taisyklių faile atsirado skyrius 5a „Skysto maisto likučiai“. 20 teksto testų – 20/20.
+
 ## Kitos smulkios pataisos
 - Kai nebuvo galima įdiegti globalių npm paketų, Vercel ir GitHub CLI buvo įdiegti į vartotojo aplanką.
 - Kadangi kompiuteryje nėra git, kodas į GitHub įkeltas per GitHub API.
