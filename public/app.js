@@ -163,6 +163,7 @@ const CATALOG = [
   ["Plytos, betonas, plytelės", "statybines", "", "remontas"],
   ["Mediena, lentos", "didziosios", "", "medis"],
   ["Padangos", "padangos", "", "ratai"],
+  ["Žvakė stiklinėje", "misrios", "Stiklinę su vašku meskite į mišrias – vaško išgremžti nereikia (stiklinių indų į žalią negalima). Metalinį dangtelį – į geltoną.", "žvakė žvakidė vaškas"],
   ["Atvėsę fejerverkai", "misrios", "Tik visiškai atvėsę.", "petardos"],
 ];
 

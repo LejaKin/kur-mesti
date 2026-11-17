@@ -1,6 +1,6 @@
 # Svarbiausi darbo su AI (Claude Code) fragmentai
 
-Visas pokalbis išsaugotas Claude Code programoje. Čia pateikti 5 momentai, kurie parodo, kaip buvo formuluojama užduotis, tikrinami rezultatai ir taisomos klaidos.
+Visas pokalbis išsaugotas Claude Code programoje. Čia pateikti svarbiausi momentai, kurie parodo, kaip buvo formuluojama užduotis, tikrinami rezultatai ir taisomos klaidos.
 
 ## 1. Užduoties formulavimas
 Claude Code gavo visą užduoties aprašymą, VASA taisyklių lentelę ir 17 vasa.lt nuorodų su nurodymu:
@@ -19,6 +19,13 @@ Sukurtas testavimo scenarijus `tests/run-tests.js` su 20 sudėtingų atvejų: Te
 
 ## 5. Patikrinimas gyvoje svetainėje
 Po paskelbimo AI pats atidarė paskelbtą nuorodą telefono dydžio naršyklėje, įkėlė testinę nuotrauką ir patikrino, kad nuotraukos kelias (telefonas → Vercel funkcija → Claude → atsakymas) veikia ir kad patarimas atitinka pažymėtus konteinerius.
+
+## 6. Vartotojos rasta logikos klaida: žvakė stiklinėje
+Testuodama telefonu vartotoja nufotografavo žvakę stiklinėje su metaliniu dangteliu ir pastebėjo prieštaravimą:
+> „Kodėl man verta išgremžti vašką, jei tiek jis, tiek indelis keliauja į tą patį konteinerį?“
+
+**Priežastis:** AI paruošimo patarimus rašė nepriklausomai nuo kategorijų, o taisyklėse žvakių nebuvo.
+**Taisymas:** (1) AI nurodyme atsirado nuoseklumo taisyklė: atskirti ar išvalyti liepiama tik tada, kai tai pakeičia, kur dalis keliauja. Taip pat aiškiai atskirtos pakuotės nuo daiktų (stiklinių indų). (2) Į taisyklių failą įrašyta: stiklinė su vašku – į mišrias, vaško išgremžti nereikia; metalinis dangtelis – į geltoną. **Patikrinimas:** ta pati nuotrauka davė nuoseklų atsakymą, o 20 teksto testų po pakeitimo vis dar 20/20.
 
 ## Kitos smulkios pataisos
 - Kai nebuvo galima įdiegti globalių npm paketų, Vercel ir GitHub CLI buvo įdiegti į vartotojo aplanką.

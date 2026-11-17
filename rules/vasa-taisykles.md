@@ -212,5 +212,6 @@ Didelių gabaritų atliekų surinkimo aikštelės Vilniuje: Pilaitės pr. 50; Li
 | Majonezas, padažas | maisto? NE – skystas maistas į maisto negalima; tirštus likučius išgremžkite į mišrias **[bendra praktika]**, pakuotę – į geltoną | |
 | Pienas, sriuba (skystis) | išpilti į kanalizaciją **[bendra praktika]**, pakuotė – geltonas | VASA: skysto maisto į maisto atliekas negalima |
 | Stiklinis butelis su užstato ženklu | taromatas | |
-| Žvakės, kamštis, guma | mišrios **[bendra praktika]** | |
+| Žvakė stiklinėje (su vaško likučiais) | stiklinė su vašku – mišrios (vaško išgremžti nereikia); metalinis dangtelis – geltonas / bendras; guminis tarpiklis – mišrios | VASA: stiklinių indų į žalią negalima – žvakės stiklinė yra dekoratyvus indas, ne maisto ar gėrimų pakuotė. Švarią stiklinę verta panaudoti dar kartą. **[žvakių VASA atskirai nemini]** |
+| Žvakės, kamštis, guma, guminiai tarpikliai | mišrios **[bendra praktika]** | |
 | Vazono žemė, nuskintos gėlės | žaliosios atliekos; kambarinių augalų dalys – maisto | VASA |
