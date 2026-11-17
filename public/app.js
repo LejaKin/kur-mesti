@@ -104,6 +104,7 @@ const CATALOG = [
   ["Jogurto ar grietinės indelis", "plastikas_metalas", "Išgremžkite likučius, foliją nuplėškite – ji irgi į geltoną.", "plastikas indelis"],
   ["Pieno ar sulčių pakelis (Tetra Pak)", "plastikas_metalas", "Išpilkite likučius, suplokite.", "tetrapak kombinuota"],
   ["Plastikinis maišelis, plėvelė", "plastikas_metalas", "", "polietilenas"],
+  ["Traškučių tūba (kartonas su folija, pvz. Pringles)", "plastikas_metalas", "Kombinuota pakuotė – visa tūba su dangteliu į geltoną. Išpurtykite trupinius, ardyti nereikia. Į mėlyną negalima (kartonas padengtas folija).", "pringles snack day tūba cilindras"],
   ["Traškučių pakelis, saldainio popierėlis", "plastikas_metalas", "", "blizgi pakuotė"],
   ["Vienkartinis kavos puodelis", "plastikas_metalas", "Išpilkite likučius. Į popierių mesti negalima.", "kava puodelis"],
   ["Plastikinis dangtelis, metalinis dangtelis", "plastikas_metalas", "", "kamštelis"],

@@ -194,6 +194,8 @@ Didelių gabaritų atliekų surinkimo aikštelės Vilniuje: Pilaitės pr. 50; Li
 | Kiaušinių dėklas (plastikinis) | geltonas / bendras | plastikinė pakuotė |
 | Kepimo popierius | mišrios | VASA: į maisto ir popieriaus negalima. |
 | Popierinė servetėlė, virtuvinis rankšluostis | maisto (jei su maistu) arba mišrios | VASA: virtuviniai popieriniai rankšluosčiai – į maisto atliekas. |
+| Traškučių tūba (kartonas su folija viduje, metalinis dugnas, plastikinis dangtelis, pvz. Pringles, Snack Day) | geltonas / bendras – visa tūba kartu su dangteliu | Kombinuota pakuotė. VASA: kombinuotos pakuotės – į geltoną; folija padengto kartono į mėlyną negalima. Išpurtykite trupinius, ardyti nereikia. |
+| Kavos, kakavos, riešutų kartoninė tūba su metaliniu dugnu | geltonas / bendras | kombinuota pakuotė |
 | Traškučių pakelis, saldainio popierėlis | geltonas / bendras | VASA: blizgios pakuotės – į plastiką. |
 | Plastikinis maišelis, plėvelė | geltonas / bendras | VASA |
 | Folija (aliuminio) | švari – geltonas / bendras **[metalinė pakuotė]**; labai sutepta – mišrios | |
