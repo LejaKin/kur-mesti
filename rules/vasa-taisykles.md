@@ -209,6 +209,8 @@ Didelių gabaritų atliekų surinkimo aikštelės Vilniuje: Pilaitės pr. 50; Li
 | Batai, drabužiai | tekstilė | sveiki – „Dėk’ui“ |
 | Pagalvė, antklodė, kilimas | didelių gabaritų / „Dėk’ui“ | VASA: ne į tekstilės konteinerį |
 | Vaistai, tabletės | vaistinė | pakuotė (kartono dėžutė) – į mėlyną |
+| Nosies purškalas, akių lašai, sirupas (vaistas) | vaistinė – visas buteliukas su likučiu | VASA: vaistų negalima išmesti ar išpilti; medikamentų į geltoną negalima |
+| Šnypščiųjų vitaminų / maisto papildų tūbelė | likusios tabletės – maisto (oranžinis maišelis); tuščia tūbelė su dangteliu – geltonas / bendras | VASA: pasibaigę vitaminai ir maisto papildai – į oranžinį maišelį (ne į vaistinę); plastikinė pakuotė – į geltoną |
 | Majonezas, padažas | maisto? NE – skystas maistas į maisto negalima; tirštus likučius išgremžkite į mišrias **[bendra praktika]**, pakuotę – į geltoną | |
 | Pienas, sriuba (skystis) | išpilti į kanalizaciją **[bendra praktika]**, pakuotė – geltonas | VASA: skysto maisto į maisto atliekas negalima |
 | Stiklinis butelis su užstato ženklu | taromatas | |

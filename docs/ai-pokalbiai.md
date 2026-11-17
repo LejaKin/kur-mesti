@@ -27,6 +27,15 @@ Testuodama telefonu vartotoja nufotografavo žvakę stiklinėje su metaliniu dan
 **Priežastis:** AI paruošimo patarimus rašė nepriklausomai nuo kategorijų, o taisyklėse žvakių nebuvo.
 **Taisymas:** (1) AI nurodyme atsirado nuoseklumo taisyklė: atskirti ar išvalyti liepiama tik tada, kai tai pakeičia, kur dalis keliauja. Taip pat aiškiai atskirtos pakuotės nuo daiktų (stiklinių indų). (2) Į taisyklių failą įrašyta: stiklinė su vašku – į mišrias, vaško išgremžti nereikia; metalinis dangtelis – į geltoną. **Patikrinimas:** ta pati nuotrauka davė nuoseklų atsakymą, o 20 teksto testų po pakeitimo vis dar 20/20.
 
+## 7. Vartotojos rastos spragos: vaistai, vitaminai ir pakuotės turinys
+Vartotoja nufotografavo nosies purškalą ir šnypščiųjų vitaminų tūbelę, palygino atsakymus su vasa.lt/medikamentai ir rado dvi problemas:
+> „Purškalas – į vaistinę, bet kodėl tada nurodoma, kad vitaminai į maisto atliekas, o kartoninė dėžutė (kurios nuotraukoje nesimato) – į popierių? … Tai kodėl šita pakuotė į geltoną? O kur aš ištuštinti turėčiau turinį?“
+
+**Priežastys:** (1) prie kategorijos „vaistai“ visada buvo rodomas tas pats bendras tekstas, minintis kitus daiktus; (2) AI liepė „ištuštinti“, bet nenurodė, kur dėti turinį; (3) AI nebuvo aiškiai nurodyta, kuo skiriasi vaistai ir papildai.
+**Taisymas:** bendras tekstas sutrumpintas; AI nurodyme atsirado taisyklės TURINYS (visada pasakyti, kur dėti turinį, ir pateikti jį kaip atskirą daiktą) bei VAISTAI ir PAPILDAI pagal VASA; paaiškinime leidžiama kalbėti tik apie nuotraukoje esančius daiktus. **Patikrinimas:** vitaminai → tabletės į oranžinį maišelį, tuščia tūbelė į geltoną; purškalas → visas į vaistinę. 20 teksto testų vis dar 20/20.
+
+**Vartotojos pasiūlymas ateičiai:** atsakymas „jei tuščia – čia, jei pilna – ten“ arba klausimų skiltis, pvz. „o jei pakuotė pilna?“. Sprendimas: pirmiausia pristatyti prašytą MVP, o tai pateikti kaip kitą žingsnį.
+
 ## Kitos smulkios pataisos
 - Kai nebuvo galima įdiegti globalių npm paketų, Vercel ir GitHub CLI buvo įdiegti į vartotojo aplanką.
 - Kadangi kompiuteryje nėra git, kodas į GitHub įkeltas per GitHub API.

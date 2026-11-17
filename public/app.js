@@ -78,7 +78,7 @@ function destination(cat, my) {
     case "pavojingos":
       return { bin: "vieta", where: "Pavojingų atliekų surinkimas", note: `${PICKUP}. Arba: ${DGASA}. Į jokį konteinerį mesti negalima.`, links: [L.pickup, L.pavojingos] };
     case "vaistai":
-      return { bin: "vieta", where: "Vaistinė", note: "Seni ir nereikalingi vaistai nemokamai priimami vaistinėse. Kartoninę dėžutę – į popierių. Pasibaigę vitaminai ir maisto papildai – į maisto atliekas.", links: [["VASA: medikamentai", "https://vasa.lt/medikamentai"]] };
+      return { bin: "vieta", where: "Vaistinė", note: "Seni ir nereikalingi vaistai nemokamai priimami vaistinėse. Neškite visą pakuotę su likučiu – neišpilkite ir neišmeskite į konteinerį.", links: [["VASA: medikamentai", "https://vasa.lt/medikamentai"]] };
     case "uzstato": {
       return { bin: "vieta", where: "Taromatas parduotuvėje", note: "Pakuotę su užstato ženklu grąžinkite į taromatą ir atgausite užstatą. Jei ženklo nėra – plastiką ir skardinę į geltoną (ar bendrą pakuočių), stiklą – į žalią konteinerį." };
     }

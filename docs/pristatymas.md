@@ -8,6 +8,6 @@
 | 5:30–7:00 | **Tikslumas** | Testavimo lentelė: 20 nuotraukų, X % sutapo (tikslas ≥ 80 %). Parodyti 1–2 klaidas ir jų priežastis. Papildomai 20 teksto atvejų: 20/20. |
 | 7:00–8:30 | **Darbas su AI** | 3–5 fragmentai iš docs/ai-pokalbiai.md. Svarbiausias: API rakto formato klaida, kaip ji pastebėta ir pataisyta. |
 | 8:30–9:30 | **Sąnaudos** | Valandos ir API išlaidos iš docs/sanaudos.md. |
-| 9:30–10:00 | **Kas toliau** | Anglų kalba, konteinerių žemėlapis, VASA taisyklių atnaujinimas kas ketvirtį. |
+| 9:30–10:00 | **Žinomos spragos ir kas toliau** | Ką rado testai telefonu (docs/telefono-testai.md): AI kartais neatskiria turinio nuo pakuotės ir nemato smulkių dalių (guminis tarpiklis). Kiti žingsniai: (1) atsakymai su sąlygomis „jei tuščia / jei pilna“; (2) klausimų skiltis po atsakymu („o jei pakuotė pilna?“); (3) anglų kalba; (4) konteinerių žemėlapis; (5) VASA taisyklių atnaujinimas kas ketvirtį. |
 
 **Demo atsarginis planas:** jei neveikia internetas, parodyti ekrano įrašą arba sąrašo pasirinkimą (veikia be AI).
