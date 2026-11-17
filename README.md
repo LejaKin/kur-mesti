@@ -46,6 +46,8 @@ vercel deploy --prod
 
 ## Testavimas
 
+**Rezultatai:** 20 realių nuotraukų – 20/20 (`docs/testavimo-lentele.md`); 20 teksto atvejų – 20/20 (`docs/testavimo-lentele-tekstas.md`). Klaidos, rastos testuojant telefonu, ir jų pataisymai – `docs/telefono-testai.md`.
+
 ```bash
 node tests/run-tests.js --text  # 20 teksto atvejų → docs/testavimo-lentele-tekstas.md
 node tests/run-tests.js         # 20 nuotraukų iš tests/nuotraukos/ → docs/testavimo-lentele.md

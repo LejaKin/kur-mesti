@@ -44,7 +44,7 @@ Vartotoja pastebėjo, kad skiltys „Kaip“ ir „Kodėl“ kartoja tą patį, 
 **Taisymas:** (1) AI nurodyme kiekvienam laukui apibrėžta paskirtis: „Paruošimas“ – tik veiksmai, „Kodėl“ – tik priežastis, be kartojimo; (2) nauja kategorija „Išpilkite į kriauklę“ neriebiems skysčiams, o riebūs skysčiai sugeriami popieriumi ir keliauja į maisto atliekas; (3) taisyklių faile atsirado skyrius 5a „Skysto maisto likučiai“. 20 teksto testų – 20/20.
 
 ## 9. Galutinis testas ir paskutinės pastabos
-Vartotoja ištestavo 16 naujų daiktų telefonu ir pateikė dvi pastabas: (1) prie kvepalų ir kitų skysčių pakuočių trūksta trumpo prierašo „jei liko skysčio – išpilkite“; (2) neryškios nuotraukos ekrane patarimas „nufotografuokite iš arčiau“ kartojasi du kartus. **Taisymas:** AI nurodyme atsirado taisyklė SKYSČIŲ PAKUOTĖS, o laukas „pastaba“ dabar aprašo tik, kas negerai. Patarimą duoda programėlė, tad jis rodomas vieną kartą. Teisingi atsakymai pagal VASA buvo surašyti PRIEŠ paleidžiant testą (`tests/tikri-atsakymai.csv`). **Rezultatas: 18 iš 18.**
+Vartotoja ištestavo 16 naujų daiktų telefonu ir pateikė dvi pastabas: (1) prie kvepalų ir kitų skysčių pakuočių trūksta trumpo prierašo „jei liko skysčio – išpilkite“; (2) neryškios nuotraukos ekrane patarimas „nufotografuokite iš arčiau“ kartojasi du kartus. **Taisymas:** AI nurodyme atsirado taisyklė SKYSČIŲ PAKUOTĖS, o laukas „pastaba“ dabar aprašo tik, kas negerai. Patarimą duoda programėlė, tad jis rodomas vieną kartą. Teisingi atsakymai pagal VASA buvo surašyti PRIEŠ paleidžiant testą (`tests/tikri-atsakymai.csv`). **Rezultatas: 18 iš 18; papildžius karoliais ir kasos čekiu – 20 iš 20.**
 
 ## Kitos smulkios pataisos
 - Kai nebuvo galima įdiegti globalių npm paketų, Vercel ir GitHub CLI buvo įdiegti į vartotojo aplanką.
