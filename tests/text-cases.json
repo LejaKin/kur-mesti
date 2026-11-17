@@ -1,0 +1,22 @@
+[
+  { "text": "tuščias stiklainis nuo uogienės su metaliniu dangteliu", "expected": "stiklas + plastikas_metalas", "note": "dangtelis atskirai" },
+  { "text": "pieno pakelis Tetra Pak", "expected": "plastikas_metalas", "note": "VASA: Tetra Pak – į geltoną" },
+  { "text": "riebalais sutepta picos dėžė", "expected": "misrios", "note": "sutepto kartono į popierių negalima" },
+  { "text": "kasos čekis", "expected": "misrios", "note": "VASA nemini; terminis popierius" },
+  { "text": "vienkartinis popierinis kavos puodelis", "expected": "plastikas_metalas", "note": "VASA: ne į popierių" },
+  { "text": "sudužusi stiklinė gėrimui", "expected": "misrios", "note": "stikliniai indai – ne į žalią" },
+  { "text": "senas veidrodis", "expected": "didziosios", "note": "veidrodžių į stiklą negalima" },
+  { "text": "AA baterijos", "expected": "baterijos", "note": "" },
+  { "text": "pasibaigusio galiojimo tabletės", "expected": "vaistai", "note": "vaistinė" },
+  { "text": "senas megztinis", "expected": "tekstile", "note": "" },
+  { "text": "kavos tirščiai", "expected": "maisto", "note": "oranžinis maišelis" },
+  { "text": "sauskelnės", "expected": "misrios", "note": "" },
+  { "text": "panaudotas kepimo aliejus", "expected": "aliejus", "note": "" },
+  { "text": "LED lemputė", "expected": "lempos", "note": "į stiklą negalima" },
+  { "text": "plaukų džiovintuvas", "expected": "elektronika_smulki", "note": "" },
+  { "text": "dažų skardinė su likučiais", "expected": "pavojingos", "note": "" },
+  { "text": "kartoninė siuntinio dėžė", "expected": "popierius", "note": "išlankstyti" },
+  { "text": "traškučių pakelis", "expected": "plastikas_metalas", "note": "blizgi pakuotė" },
+  { "text": "senas čiužinys", "expected": "didziosios", "note": "" },
+  { "text": "dantų šepetėlis", "expected": "misrios", "note": "higienos reikmenys" }
+]

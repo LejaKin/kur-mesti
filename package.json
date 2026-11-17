@@ -1,0 +1,14 @@
+{
+  "name": "kur-mesti-vilnius",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Vilniečiui pagal nuotrauką pasako, į kurį konteinerį mesti atlieką (pagal VASA taisykles).",
+  "scripts": {
+    "dev": "node dev-server.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.9.0"
+  },
+  "engines": { "node": ">=20" }
+}
