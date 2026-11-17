@@ -259,7 +259,7 @@ function renderResult(data, imgUrl) {
       <div class="unclear">
         <div class="big">🤔</div>
         <h1>Nepavyko tiksliai atpažinti</h1>
-        <p class="lead">${esc(data.pastaba || "Nesu tikras, kas nuotraukoje.")} Nufotografuokite iš arčiau, gerame apšvietime, kad matytųsi ženklinimas – arba pasirinkite iš sąrašo.</p>
+        <p class="lead">${data.pastaba ? esc(data.pastaba) + " " : ""}Nufotografuokite iš arčiau ir gerame apšvietime, kad matytųsi ženklinimas, arba pasirinkite iš sąrašo.</p>
       </div>`;
     if (items.length) html += `<h2>Spėjimas</h2>` + items.map(itemCard).join("");
   } else {

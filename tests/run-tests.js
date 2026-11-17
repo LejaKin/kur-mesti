@@ -45,8 +45,10 @@ for (const c of cases) {
   const items = data.daiktai || [];
   const got = items.map((i) => i.kategorija);
   // Sutapo, jei teisinga kategorija yra tarp AI nurodytų (keliems daiktams – visos turi būti).
+  // „a|b“ – tinka bet kuris variantas; „NESUPRATO“ – tikimasi, kad AI pasakys, jog neatpažino.
   const expectedList = c.expected.split("+").map((s) => s.trim());
-  const match = code === 200 && expectedList.every((e) => got.includes(e));
+  const unclear = !data.atpazinta || !items.some((i) => i.pasitikejimas !== "zemas");
+  const match = code === 200 && (c.expected.trim() === "NESUPRATO" ? unclear : !unclear && expectedList.every((e) => e.split("|").some((x) => got.includes(x.trim()))));
   if (match) ok++;
   tokensIn += (data.usage?.in || 0) + (data.usage?.cacheRead || 0);
   tokensOut += data.usage?.out || 0;

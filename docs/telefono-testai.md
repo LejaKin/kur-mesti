@@ -10,5 +10,7 @@ Vartotoja fotografavo realias atliekas paskelbtoje programėlėje (kur-mesti-vil
 | 4 | Šnypščiųjų multivitaminų tūbelė | „Ištuštinkite“ – geltonas (nepasakyta, kur dėti tabletes) | tabletės – oranžinis maišelis; tuščia tūbelė – geltonas | ⚠️ (trūko turinio) | ✅ |
 | 5 | Kietasis sūris (Džiugas) | maisto – oranžinis maišelis | maisto – oranžinis maišelis; pakuotė – geltonas | ✅ (bet „Paruošimas“, „Kaip“ ir „Kodėl“ kartojo tą patį) | ✅ „Kodėl“ dabar paaiškina priežastį |
 | 6 | Šeivamedžio sirupo butelis su likučiu | antraštė „Mišrios“, tekstas „išpilkite į kriauklę“ | sirupas – kriauklė (neriebus); stiklas – žalias; kamštelis – geltonas | ❌ (prieštaringa antraštė) | ✅ nauja kategorija „Išpilkite į kriauklę“ |
+| 7 | Kvepalų buteliukas (su vaistais) | stiklas, bet nepasakyta, ką daryti su likusiais kvepalais | stiklas; likutį išpurkšti / išpilti | ⚠️ | ✅ „Jei liko kvepalų – išpurkškite arba išpilkite į kriauklę“ |
+| 8 | Sąmoningai neryški nuotrauka | „Nepavyko atpažinti“, bet patarimas „fotografuokite iš arčiau“ kartojosi du kartus | vienas aiškus patarimas | ⚠️ | ✅ AI parašo tik, kas negerai, o patarimą duoda programėlė |
 
-Likusios nuotraukos bus surašytos į `docs/testavimo-lentele.md` (`node tests/run-tests.js`).
+Galutinė lentelė su visomis nuotraukomis: `docs/testavimo-lentele.md`.

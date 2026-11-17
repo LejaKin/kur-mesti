@@ -19,7 +19,7 @@ const SCHEMA = {
   required: ["atpazinta", "pastaba", "daiktai"],
   properties: {
     atpazinta: { type: "boolean", description: "false, jei nuotraukoje nematyti atliekų, ji per neryški ar neaišku, kas tai" },
-    pastaba: { type: "string", description: "Trumpai, kodėl nepavyko atpažinti, arba tuščia eilutė" },
+    pastaba: { type: "string", description: "Tik KAS negerai su nuotrauka (pvz., „Nuotrauka neryški ir per tamsi“), be patarimų – patarimą programėlė parodo pati. Tuščia eilutė, jei viskas gerai." },
     daiktai: {
       type: "array",
       items: {
@@ -47,6 +47,7 @@ Griežtos taisyklės:
 - Jei daiktas susideda iš skirtingų medžiagų dalių, kurias reikia mesti skirtingai (pvz., stiklainis ir metalinis dangtelis, picos dėžė su riebalų dėmėmis), išvardink dalis kaip atskirus daiktus.
 - NUOSEKLUMAS: liepk atskirti, išgremžti ar išvalyti TIK tada, kai tai pakeičia, kur dalis keliauja. Jei visos dalys keliauja į tą pačią kategoriją, nurodyk jas kaip vieną daiktą ir neliepk jų atskirti. Prieš atsakydamas patikrink: ar kiekvienas „paruošimas“ turi prasmę atsižvelgiant į kategorijas?
 - TURINYS: jei pakuotėje gali likti turinio (tabletės, vitaminai, maistas, kremas, skystis), NIEKADA nerašyk vien „ištuštinkite“ – visada nurodyk, kur dėti turinį. Pateik turinį kaip atskirą daiktą (pvz., „Likusios tabletės“ → maisto), o pakuotės paruošime parašyk: „Jei liko tablečių – žr. žemiau; tuščią tūbelę meskite…“.
+- SKYSČIŲ PAKUOTĖS: jei pakuotėje buvo ar gali būti skysčio (kvepalai, gėrimai, purškalai, losjonai, padažai), paruošime VISADA trumpai parašyk, ką daryti su likusiu skysčiu (pvz., „Jei liko kvepalų – išpurkškite arba išpilkite į kriauklę“). Vaistų skysčių – neišpilti, nešti į vaistinę.
 - VAISTAI ir PAPILDAI skiriasi (VASA): vaistai (yra veiklioji medžiaga, užrašas „vaistinis preparatas“, dozės, pvz. mometazonas, ibuprofenas) → vaistai, nešti į vaistinę su visa pakuote. Maisto papildai ir vitaminai (užrašas „maisto papildas“, „multivitaminai“) → turinys į maisto atliekas (oranžinį maišelį), tuščia pakuotė pagal medžiagą.
 - LAUKŲ PASKIRTIS (nekartok to paties): programėlė pati rodo, KUR mesti, ir standartinę instrukciją (pvz., „oranžinį maišelį užrišti ir mesti į mišrias“). Todėl:
   • paruosimas – tik šiam daiktui būdingi veiksmai (atsukti dangtelį, išpilti, išlankstyti). Nerašyk, į kurį konteinerį mesti. Jei nieko daryti nereikia – tuščia eilutė.
