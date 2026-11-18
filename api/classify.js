@@ -79,12 +79,17 @@ function rateLimited(ip) {
 export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).json({ error: "Tik POST" });
   const ip = (req.headers["x-forwarded-for"] || "").split(",")[0] || "local";
-  if (rateLimited(ip)) return res.status(429).json({ error: "Per daug užklausų. Pabandykite po kelių minučių." });
-
-  const { image, mediaType, text } = req.body || {};
-  if (!image && !text) return res.status(400).json({ error: "Trūksta nuotraukos arba teksto" });
-  if (image && image.length > 4_000_000) return res.status(413).json({ error: "Nuotrauka per didelė" });
-  if (text && text.length > 300) return res.status(400).json({ error: "Tekstas per ilgas" });
+    const { image, mediaType, text } = req.body || {};
+  const en = (req.body || {}).lang === "en";
+  const msg = en
+    ? { rate: "Too many requests. Please try again in a few minutes.", missing: "Photo or text is missing", big: "The photo is too large", long: "The text is too long", refused: "Could not process the photo.", down: "The AI is unavailable right now. Try again or choose from the list." }
+    : { rate: "Per daug užklausų. Pabandykite po kelių minučių.", missing: "Trūksta nuotraukos arba teksto", big: "Nuotrauka per didelė", long: "Tekstas per ilgas", refused: "Nepavyko apdoroti nuotraukos.", down: "AI šiuo metu nepasiekiamas. Pabandykite dar kartą arba pasirinkite iš sąrašo." };
+  // Kalbos nurodymas – vartotojo žinutėje, kad sisteminis tekstas (taisyklės) liktų kešuojamas
+  const langNote = en ? "\n\nLANGUAGE: The user reads English. Write ALL text fields (pavadinimas, medziaga, paruosimas, paaiskinimas, pastaba) in clear, simple English. Keep category codes exactly as defined. Lithuanian place names (e.g. „Dėk’ui“, Pilaitės pr. 50) stay as they are." : "";
+  if (rateLimited(ip)) return res.status(429).json({ error: msg.rate });
+  if (!image && !text) return res.status(400).json({ error: msg.missing });
+  if (image && image.length > 4_000_000) return res.status(413).json({ error: msg.big });
+  if (text && text.length > 300) return res.status(400).json({ error: msg.long });
 
   const content = [];
   if (image) {
@@ -92,9 +97,9 @@ export default async function handler(req, res) {
       type: "image",
       source: { type: "base64", media_type: ["image/jpeg", "image/png", "image/webp"].includes(mediaType) ? mediaType : "image/jpeg", data: image },
     });
-    content.push({ type: "text", text: text ? `Nuotrauka. Vartotojo komentaras: ${text}` : "Kur mesti šias atliekas?" });
+    content.push({ type: "text", text: (text ? `Nuotrauka. Vartotojo komentaras: ${text}` : "Kur mesti šias atliekas?") + langNote });
   } else {
-    content.push({ type: "text", text: `Vartotojas klausia tekstu (be nuotraukos): „${text}“. Kur tai mesti?` });
+    content.push({ type: "text", text: `Vartotojas klausia tekstu (be nuotraukos): „${text}“. Kur tai mesti?` + langNote });
   }
 
   try {
@@ -109,7 +114,7 @@ export default async function handler(req, res) {
     });
 
     if (response.stop_reason === "refusal") {
-      return res.status(200).json({ atpazinta: false, pastaba: "Nepavyko apdoroti nuotraukos.", daiktai: [] });
+      return res.status(200).json({ atpazinta: false, pastaba: msg.refused, daiktai: [] });
     }
     const textBlock = response.content.find((b) => b.type === "text");
     const data = JSON.parse(textBlock.text);
@@ -118,6 +123,6 @@ export default async function handler(req, res) {
   } catch (err) {
     console.error("Claude API klaida:", err?.status, err?.message);
     const status = err?.status === 429 ? 503 : 500;
-    return res.status(status).json({ error: "AI šiuo metu nepasiekiamas. Pabandykite dar kartą arba pasirinkite iš sąrašo." });
+    return res.status(status).json({ error: msg.down });
   }
 }

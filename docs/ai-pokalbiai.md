@@ -46,6 +46,12 @@ Vartotoja pastebėjo, kad skiltys „Kaip“ ir „Kodėl“ kartoja tą patį, 
 ## 9. Galutinis testas ir paskutinės pastabos
 Vartotoja ištestavo 16 naujų daiktų telefonu ir pateikė dvi pastabas: (1) prie kvepalų ir kitų skysčių pakuočių trūksta trumpo prierašo „jei liko skysčio – išpilkite“; (2) neryškios nuotraukos ekrane patarimas „nufotografuokite iš arčiau“ kartojasi du kartus. **Taisymas:** AI nurodyme atsirado taisyklė SKYSČIŲ PAKUOTĖS, o laukas „pastaba“ dabar aprašo tik, kas negerai. Patarimą duoda programėlė, tad jis rodomas vieną kartą. Teisingi atsakymai pagal VASA buvo surašyti PRIEŠ paleidžiant testą (`tests/tikri-atsakymai.csv`). **Rezultatas: 18 iš 18; papildžius karoliais ir kasos čekiu – 20 iš 20.**
 
+## 10. Papildoma funkcija: anglų kalba
+Kadangi MVP buvo baigtas anksčiau, vartotoja paprašė papildomos užduoties funkcijos:
+> „Gal būtų galimybė pasirinkti anglų kalbą kur šone?“
+
+**Ką padarė AI:** visi programėlės tekstai perkelti į vieną LT/EN žodyną (`public/i18n.js`), viršuje atsirado LT/EN mygtukas, pasirinkimas išsaugomas telefone. AI atsakymai gaunami pasirinkta kalba, o VASA taisyklės ir kategorijos lieka tos pačios, todėl tikslumas nepriklauso nuo kalbos. Kalbos nurodymas dedamas į vartotojo žinutę, kad taisyklių tekstas liktų kešuojamas ir kaina nepadidėtų. **Patikrinimas:** abi kalbos išbandytos telefono dydžio naršyklėje: perjungimas, sąrašas, paieška („pizza“) ir nuotrauka (vaistai ir kvepalai). Lietuviški atsakymai nepasikeitė. Testo metu pastebėtas ir pataisytas pasikartojantis sakinys pranešime „Neturite šio konteinerio“.
+
 ## Kitos smulkios pataisos
 - Kai nebuvo galima įdiegti globalių npm paketų, Vercel ir GitHub CLI buvo įdiegti į vartotojo aplanką.
 - Kadangi kompiuteryje nėra git, kodas į GitHub įkeltas per GitHub API.

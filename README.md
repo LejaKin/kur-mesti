@@ -11,7 +11,7 @@ Web programėlė telefonui: nufotografuoji atlieką, o ji pasako, į kurį Vilni
 3. **Atpažinimas.** Serverio funkcija `api/classify.js` siunčia nuotrauką ir visą taisyklių failą `rules/vasa-taisykles.md` modeliui Claude Opus 5.5. Modelis grąžina griežto formato JSON: kiekvieną daiktą, jo medžiagą, kategoriją (iš 20 fiksuotų), pasitikėjimo lygį, paruošimą (išpilti, atskirti dangtelį ir pan.) ir paaiškinimą.
 4. **Patarimas.** Konteinerį parenka ne AI, o programėlės kodas (`destination()` faile `public/app.js`), pagal vartotojo pažymėtus konteinerius. Pavyzdžiui, plastikas: geltonas → jei jo nėra, bendras pakuočių → jei ir jo nėra, artimiausias viešas konteineris. Specialioms atliekoms nurodoma alternatyva: didelių gabaritų aikštelės adresai, nemokamas paėmimas per VASA, taromatas, vaistinė, parduotuvių dėžės, „Dėk’ui“.
 5. **Nesuprato.** Jei AI nuotraukos neatpažino arba nepasitiki atsakymu, programėlė taip ir pasako. Ji pasiūlo fotografuoti dar kartą arba pasirinkti iš sąrašo (~65 dažnų atliekų katalogas, veikia be AI).
-6. **Papildomai.** Paieška tekstu (iš pradžių vietiniame kataloge, tada per AI) ir neseniai tikrintų daiktų istorija.
+6. **Papildomai.** Paieška tekstu (iš pradžių vietiniame kataloge, tada per AI), neseniai tikrintų daiktų istorija ir **anglų kalba**: mygtukas LT/EN viršuje perjungia visą sąsają, konteinerius, patarimus, sąrašą ir AI atsakymus (tekstai – `public/i18n.js`).
 
 ```
 Telefonas (public/)  ──nuotrauka──▶  Vercel funkcija (api/classify.js)  ──▶  Claude API

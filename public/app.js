@@ -8,94 +8,62 @@ const PIN_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" str
 const DROP_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/></svg>';
 const BAG_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 8h12l-1 13H7L6 8z"/><path d="M9 8c0-3 1-5 3-5s3 2 3 5"/></svg>';
 
-const BINS = {
-  geltonas: { name: "Geltonas konteineris", short: "Geltonas", desc: "Plastikas, metalas, Tetra Pak pakuotės", color: "#F2C200", light: true },
-  melynas:  { name: "Mėlynas konteineris", short: "Mėlynas", desc: "Popierius ir kartonas", color: "#1F67C9" },
-  zalias:   { name: "Žalias konteineris", short: "Žalias", desc: "Stiklinės pakuotės", color: "#1E8E46" },
-  bendras:  { name: "Bendras pakuočių konteineris", short: "Bendras pakuočių", desc: "Plastikas, metalas, popierius ir kartonas kartu (stovi vietoj geltono ir mėlyno)", color: "linear-gradient(135deg,#F2C200 0 50%,#1F67C9 50% 100%)" },
-  maisto:   { name: "Maisto atliekų konteineris", short: "Maisto atliekų", desc: "Tik Panerių, Naujininkų, Grigiškių sen., pietinėje Rasų ir Vilkpėdės dalyje", color: "#8A5A2B" },
-  tekstile: { name: "Tekstilės konteineris", short: "Tekstilės", desc: "Netoliese yra tekstilės konteineris", color: "#7C4DCC" },
-  aliejus:  { name: "Maistinio aliejaus konteineris", short: "Aliejaus", desc: "Netoliese yra „Riebuko“ aliejaus konteineris", color: "#C98A0B" },
-  zaliuju:  { name: "Žaliųjų atliekų konteineris", short: "Žaliųjų atliekų", desc: "Individualaus namo konteineris žolei, lapams, šakoms", color: "#5E8C12" },
-  // Visada prieinami / ne vartotojo pasirinkimas:
-  misrios:   { name: "Mišrių atliekų konteineris", color: "#4B5563" },
-  oranzinis: { name: "Oranžinis maišelis → mišrių atliekų konteineris", color: "#EA7317", icon: BAG_ICON },
-  kriaukle:  { name: "Išpilkite į kriauklę", color: "#2A6F9E", icon: DROP_ICON },
-  vieta:     { name: "Speciali surinkimo vieta", color: "#0F6E66", icon: PIN_ICON },
+// Spalvos ir ikonos; pavadinimai – i18n.js
+const BIN_STYLE = {
+  geltonas: { color: "#F2C200", light: true }, melynas: { color: "#1F67C9" }, zalias: { color: "#1E8E46" },
+  bendras: { color: "linear-gradient(135deg,#F2C200 0 50%,#1F67C9 50% 100%)" }, maisto: { color: "#8A5A2B" },
+  tekstile: { color: "#7C4DCC" }, aliejus: { color: "#C98A0B" }, zaliuju: { color: "#5E8C12" },
+  misrios: { color: "#4B5563" }, oranzinis: { color: "#EA7317", icon: BAG_ICON }, kriaukle: { color: "#2A6F9E", icon: DROP_ICON }, vieta: { color: "#0F6E66", icon: PIN_ICON },
 };
-const SELECTABLE = [
-  { group: "Rūšiavimo konteineriai", keys: ["geltonas", "melynas", "zalias", "bendras"] },
-  { group: "Kiti konteineriai šalia namų", keys: ["maisto", "tekstile", "aliejus", "zaliuju"] },
-];
+const SELECTABLE = [["geltonas", "melynas", "zalias", "bendras"], ["maisto", "tekstile", "aliejus", "zaliuju"]];
+const URLS = {
+  pickup: "https://vasa.lt/individuali-atlieku-paemimo-paslauga", tekstile: "https://vasa.lt/tekstile", riebukas: "https://vasa.lt/riebukas",
+  maisto: "https://vasa.lt/maisto-atliekos", elektronika: "https://vasa.lt/elektronika", baterijos: "https://vasa.lt/baterijos-ir-akumuliatoriai",
+  pavojingos: "https://vasa.lt/pavojingos-atliekos", zaliosios: "https://vasa.lt/zaliosios-atliekos", konteineriai: "https://vasa.lt/rusiavimo-konteineriai",
+  misrios: "https://vasa.lt/misrios-komunalines-atliekos", lempos: "https://vasa.lt/dienos-sviesos-lempos", medikamentai: "https://vasa.lt/medikamentai",
+  aliejus: "https://vasa.lt/kepimo-aliejaus-atliekos", padangos: "https://vasa.lt/padangos", gyvsidabris: "https://vasa.lt/gyvsidabrio-turincios-atliekos",
+};
 
-const DGASA = "Didelių gabaritų atliekų aikštelė: Pilaitės pr. 50, Liepkalnio g. 113B, Pramonės g. 209S, Graičiūno g. 36C arba Pumpėnų g. 10";
-const PICKUP = "Nemokamas paėmimas iš namų kartą per metus – užsakykite VASA savitarnoje arba tel. 0 800 19118";
-const L = {
-  pickup: ["Užsakyti paėmimą", "https://vasa.lt/individuali-atlieku-paemimo-paslauga"],
-  tekstile: ["Tekstilės konteinerių žemėlapis", "https://vasa.lt/tekstile"],
-  riebukas: ["Aliejaus konteinerių žemėlapis", "https://vasa.lt/riebukas"],
-  maisto: ["VASA: maisto atliekos", "https://vasa.lt/maisto-atliekos"],
-  elektronika: ["VASA: elektronika", "https://vasa.lt/elektronika"],
-  baterijos: ["VASA: baterijos", "https://vasa.lt/baterijos-ir-akumuliatoriai"],
-  pavojingos: ["VASA: pavojingos atliekos", "https://vasa.lt/pavojingos-atliekos"],
-  zaliosios: ["VASA: žaliosios atliekos", "https://vasa.lt/zaliosios-atliekos"],
-  konteineriai: ["VASA: rūšiavimo konteineriai", "https://vasa.lt/rusiavimo-konteineriai"],
-  misrios: ["VASA: mišrios atliekos", "https://vasa.lt/misrios-komunalines-atliekos"],
-};
+// ---------- Kalba ----------
+let LANG = (() => { try { return localStorage.getItem("lang") === "en" ? "en" : "lt"; } catch { return "lt"; } })();
+const T = () => I18N[LANG];
+const binName = (k) => T().bins[k][0];
+const binShort = (k) => T().bins[k][1];
+const binDesc = (k) => T().bins[k][2];
+const BINS = new Proxy({}, { get: (_, k) => ({ ...BIN_STYLE[k], name: binName(k) }) });
+const lk = (...keys) => keys.map((k) => [T().links[k], URLS[k]]);
 
 // ---------- Kategorija + vartotojo konteineriai → kur mesti ----------
 function destination(cat, my) {
   const has = (k) => my.includes(k);
+  const X = T().d;
   const packaging = (own) => {
     if (has(own)) return { bin: own };
     if (has("bendras")) return { bin: "bendras" };
-    return { bin: own, missing: `Prie jūsų namų tokio konteinerio nepažymėta. Artimiausias viešas ${BINS[own].short.toLowerCase()} arba bendras pakuočių konteineris (jų yra prie daugiabučių ir parduotuvių).`, links: [L.konteineriai] };
+    return { bin: own, missing: X.packMissing(binShort(own)), links: lk("konteineriai") };
   };
   switch (cat) {
-    case "stiklas":
-      return has("zalias") ? { bin: "zalias" } : { bin: "zalias", missing: "Žalio konteinerio nepažymėjote. Neškite į artimiausią viešą žalią stiklo konteinerį (prie daugiabučių, parduotuvių). Į bendrą pakuočių konteinerį stiklo mesti negalima.", links: [L.konteineriai] };
+    case "stiklas": return has("zalias") ? { bin: "zalias" } : { bin: "zalias", missing: X.glassMissing, links: lk("konteineriai") };
     case "popierius": return packaging("melynas");
     case "plastikas_metalas": return packaging("geltonas");
-    case "maisto":
-      return has("maisto") ? { bin: "maisto", note: "Galima mesti su bet kokiu maišeliu arba be jo." }
-        : { bin: "oranzinis", note: "Kaupkite oranžiniame maišelyje, tvirtai užrišite ir meskite į mišrių atliekų konteinerį. Be pakuočių.", links: [L.maisto] };
-    case "misrios": return { bin: "misrios", links: [L.misrios] };
-    case "tekstile":
-      return has("tekstile") ? { bin: "tekstile", note: "Nešvarią ar šlapią tekstilę supakuokite sandariai. Tinkamą dėvėti galite nešti į „Dėk’ui“ stotelę." }
-        : { bin: "tekstile", missing: "Tekstilės konteinerio nepažymėjote. Artimiausią rasite žemėlapyje; tekstilę priima ir H&M, Lindex parduotuvės, o tinkamą dėvėti – „Dėk’ui“ stotelės.", links: [L.tekstile] };
-    case "aliejus":
-      return has("aliejus") ? { bin: "aliejus", note: "Atvėsintą aliejų supilkite į sandarų indą, uždarykite ir meskite visą indą." }
-        : { bin: "aliejus", missing: "Aliejaus konteinerio nepažymėjote. Artimiausią „Riebuko“ konteinerį rasite žemėlapyje (Vilniuje ~196) arba nuvežkite į didelių gabaritų atliekų aikštelę. Labai mažą kiekį sugerkite popieriniu rankšluosčiu ir meskite į maisto atliekas.", links: [L.riebukas] };
-    case "zaliosios":
-      return has("zaliuju") ? { bin: "zaliuju" }
-        : { bin: "vieta", where: "Žaliųjų atliekų aikštelė arba kompostas", note: "Nemokamai priima VAATC žaliųjų atliekų aikštelės (pvz., Trakų g. 1A, Lentvaris). Kambarinių gėlių lapai – į oranžinį maisto maišelį. Į mišrių konteinerį mesti draudžiama.", links: [L.zaliosios] };
-    case "elektronika_smulki":
-      return { bin: "vieta", where: "Elektronikos surinkimo dėžė parduotuvėje", note: "Tokios dėžės yra maisto prekių ir elektronikos parduotuvėse. Veikiantį daiktą galite atiduoti į „Dėk’ui“ stotelę. Į konteinerius mesti negalima.", links: [L.elektronika] };
-    case "elektronika_stambi":
-      return { bin: "vieta", where: "Nemokamas paėmimas arba aikštelė", note: `${PICKUP}. Arba: ${DGASA}.`, links: [L.pickup, L.elektronika] };
-    case "baterijos":
-      return { bin: "vieta", where: "Baterijų surinkimo dėžutė", note: "Dėžutės yra parduotuvėse ir kai kurių daugiabučių laiptinėse. Automobilių akumuliatorius priima juos parduodančios įmonės.", links: [L.baterijos] };
-    case "lempos":
-      return { bin: "vieta", where: "Lempų surinkimo dėžė parduotuvėje arba aikštelė", note: `Į stiklo konteinerį lempučių mesti negalima. Dienos šviesos lempas atiduokite nepažeistas ir supakuotas. ${DGASA}.`, links: [["VASA: lempos", "https://vasa.lt/dienos-sviesos-lempos"]] };
-    case "pavojingos":
-      return { bin: "vieta", where: "Pavojingų atliekų surinkimas", note: `${PICKUP}. Arba: ${DGASA}. Į jokį konteinerį mesti negalima.`, links: [L.pickup, L.pavojingos] };
-    case "vaistai":
-      return { bin: "vieta", where: "Vaistinė", note: "Seni ir nereikalingi vaistai nemokamai priimami vaistinėse. Neškite visą pakuotę su likučiu – neišpilkite ir neišmeskite į konteinerį.", links: [["VASA: medikamentai", "https://vasa.lt/medikamentai"]] };
-    case "skystis":
-      return { bin: "kriaukle", note: "Tik neriebius skysčius (gėrimai, sirupas, sultys, pienas). Aliejaus ir riebalų į kriauklę pilti negalima – jie užkemša vamzdžius; nedidelį riebų likutį sugerkite popieriniu rankšluosčiu ir dėkite į maisto atliekas.", links: [["VASA: aliejus", "https://vasa.lt/kepimo-aliejaus-atliekos"]] };
-    case "uzstato": {
-      return { bin: "vieta", where: "Taromatas parduotuvėje", note: "Pakuotę su užstato ženklu grąžinkite į taromatą ir atgausite užstatą. Jei ženklo nėra – plastiką ir skardinę į geltoną (ar bendrą pakuočių), stiklą – į žalią konteinerį." };
-    }
-    case "didziosios":
-      return { bin: "vieta", where: "Didelių gabaritų atliekos", note: `${PICKUP}. Arba: ${DGASA}. Tvarkingus daiktus – į „Dėk’ui“ stotelę. Prie konteinerių palikti draudžiama (bauda 140–600 €).`, links: [L.pickup] };
-    case "statybines":
-      return { bin: "vieta", where: "Statybinės atliekos – paėmimas arba aikštelė", note: `Sudėkite į maišus iki 25 kg. ${PICKUP}. Arba: ${DGASA}.`, links: [L.pickup] };
-    case "padangos":
-      return { bin: "vieta", where: "Aikštelė arba padangų pardavėjas", note: `4 padangos per metus nemokamai: ${DGASA.replace("Didelių gabaritų atliekų aikštelė: ", "")}. Taip pat priima padangų pardavėjai ir servisai.`, links: [["VASA: padangos", "https://vasa.lt/padangos"]] };
-    case "gyvsidabris":
-      return { bin: "vieta", where: "Aikštelė arba „Grinda“ tel. 1355", note: `Gyvsidabrio termometrą nemokamai paims „Grinda“ avarinė tarnyba (tel. 1355) arba priims aikštelė. ${DGASA}.`, links: [["VASA: gyvsidabris", "https://vasa.lt/gyvsidabrio-turincios-atliekos"]] };
-    default:
-      return { bin: "misrios" };
+    case "maisto": return has("maisto") ? { bin: "maisto", note: X.foodBin } : { bin: "oranzinis", note: X.foodBag, links: lk("maisto") };
+    case "misrios": return { bin: "misrios", links: lk("misrios") };
+    case "tekstile": return has("tekstile") ? { bin: "tekstile", note: X.textileHas } : { bin: "tekstile", missing: X.textileMissing, links: lk("tekstile") };
+    case "aliejus": return has("aliejus") ? { bin: "aliejus", note: X.oilHas } : { bin: "aliejus", missing: X.oilMissing, links: lk("riebukas") };
+    case "zaliosios": return has("zaliuju") ? { bin: "zaliuju" } : { bin: "vieta", where: X.greenWhere, note: X.greenNote, links: lk("zaliosios") };
+    case "elektronika_smulki": return { bin: "vieta", where: X.smallElWhere, note: X.smallElNote, links: lk("elektronika") };
+    case "elektronika_stambi": return { bin: "vieta", where: X.bigElWhere, note: X.bigElNote, links: lk("pickup", "elektronika") };
+    case "baterijos": return { bin: "vieta", where: X.battWhere, note: X.battNote, links: lk("baterijos") };
+    case "lempos": return { bin: "vieta", where: X.lampWhere, note: X.lampNote, links: lk("lempos") };
+    case "pavojingos": return { bin: "vieta", where: X.hazWhere, note: X.hazNote, links: lk("pickup", "pavojingos") };
+    case "vaistai": return { bin: "vieta", where: X.medWhere, note: X.medNote, links: lk("medikamentai") };
+    case "skystis": return { bin: "kriaukle", note: X.liquidNote, links: lk("aliejus") };
+    case "uzstato": return { bin: "vieta", where: X.depWhere, note: X.depNote };
+    case "didziosios": return { bin: "vieta", where: X.bulkyWhere, note: X.bulkyNote, links: lk("pickup") };
+    case "statybines": return { bin: "vieta", where: X.buildWhere, note: X.buildNote, links: lk("pickup") };
+    case "padangos": return { bin: "vieta", where: X.tyreWhere, note: X.tyreNote, links: lk("padangos") };
+    case "gyvsidabris": return { bin: "vieta", where: X.mercWhere, note: X.mercNote, links: lk("gyvsidabris") };
+    default: return { bin: "misrios" };
   }
 }
 
@@ -178,16 +146,35 @@ const store = {
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
 };
 let myBins = store.get("bins", null);
+let current = "screen-home";
+let lastResult = null;
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+// Katalogo įrašas pasirinkta kalba: [pavadinimas, kategorija, paruošimas, paieškos žodžiai]
+const cat = (i) => LANG === "en" ? [CATALOG_EN[i][0], CATALOG[i][1], CATALOG_EN[i][1], CATALOG_EN[i][2]] : CATALOG[i];
+const catSearch = (i) => CATALOG[i][0] + " " + CATALOG[i][3] + " " + CATALOG_EN[i][0] + " " + CATALOG_EN[i][2];
 
 function swatch(key, extraClass = "") {
   const b = BINS[key];
   return `<span class="swatch ${extraClass}" style="background:${b.color}">${b.icon || BIN_ICON}</span>`;
 }
 
+// ---------- Statiniai tekstai ----------
+function applyStatic() {
+  const t = T();
+  document.documentElement.lang = t.htmlLang;
+  document.title = t.brand + " Vilnius";
+  document.querySelectorAll("[data-i18n]").forEach((el) => (el.textContent = t[el.dataset.i18n]));
+  document.querySelectorAll("[data-i18n-ph]").forEach((el) => (el.placeholder = t[el.dataset.i18nPh]));
+  const lb = $("#btn-lang");
+  lb.textContent = t.switchTo;
+  lb.setAttribute("aria-label", t.switchLabel);
+}
+
 // ---------- Ekranai ----------
 function show(id) {
+  current = id;
   document.querySelectorAll(".screen").forEach((s) => (s.hidden = s.id !== id));
   $("#bottom-bar").hidden = id === "screen-setup";
   $("#setup-bar").hidden = id !== "screen-setup";
@@ -196,27 +183,27 @@ function show(id) {
 
 function renderSetup() {
   const sel = myBins || [];
-  $("#container-list").innerHTML = SELECTABLE.map((g) =>
-    `<div class="group-title">${g.group}</div>` +
-    g.keys.map((k) => `
+  $("#container-list").innerHTML = SELECTABLE.map((keys, g) =>
+    `<div class="group-title">${T().groups[g]}</div>` +
+    keys.map((k) => `
       <label class="choice">
         <input type="checkbox" value="${k}" ${sel.includes(k) ? "checked" : ""}>
         ${swatch(k)}
-        <span><span class="t">${BINS[k].name}</span><br><span class="d">${BINS[k].desc}</span></span>
+        <span><span class="t">${binName(k)}</span><br><span class="d">${binDesc(k)}</span></span>
       </label>`).join("")
   ).join("");
   show("screen-setup");
 }
 
 function renderHome() {
-  $("#my-bins").innerHTML = (myBins.length ? myBins : []).map((k) => `<span class="chip">${swatch(k)}${BINS[k].short}</span>`).join("")
-    + `<span class="chip">${swatch("misrios")}Mišrios</span>`;
+  $("#my-bins").innerHTML = myBins.map((k) => `<span class="chip">${swatch(k)}${binShort(k)}</span>`).join("")
+    + `<span class="chip">${swatch("misrios")}${T().mixedChip}</span>`;
   const hist = store.get("history", []);
   $("#history-title").hidden = !hist.length;
   $("#history").innerHTML = hist.slice(0, 10).map((h) => {
     const d = destination(h.cat, myBins);
     const where = d.where || BINS[d.bin].name;
-    return `<li>${swatch(d.bin)}<span><b>${esc(h.name)}</b><br><small>${esc(where)}</small></span><span class="when">${new Date(h.t).toLocaleDateString("lt-LT")}</span></li>`;
+    return `<li>${swatch(d.bin)}<span><b>${esc(h.name)}</b><br><small>${esc(where)}</small></span><span class="when">${new Date(h.t).toLocaleDateString(T().dateLocale)}</span></li>`;
   }).join("");
   $("#search-input").value = "";
   $("#search-suggest").innerHTML = "";
@@ -224,72 +211,77 @@ function renderHome() {
 }
 
 function itemCard(it) {
+  const t = T();
   const d = destination(it.kategorija, myBins);
   const b = BINS[d.bin];
   const where = d.where || b.name;
   const low = it.pasitikejimas === "zemas";
-  const links = (d.links || []).map(([t, u]) => `<a href="${u}" target="_blank" rel="noopener">${t} ↗</a>`).join("");
+  const links = (d.links || []).map(([tx, u]) => `<a href="${u}" target="_blank" rel="noopener">${tx} ↗</a>`).join("");
   return `
   <article class="item">
     <div class="bin ${b.light ? "light" : ""}" style="background:${b.color}">
       ${swatch(d.bin)}
-      <div><div class="label">${d.missing ? "Reikia" : d.bin === "kriaukle" ? "Turinys" : "Meskite į"}</div><div class="where">${esc(where)}</div></div>
+      <div><div class="label">${d.missing ? t.labelNeed : d.bin === "kriaukle" ? t.labelContent : t.labelThrow}</div><div class="where">${esc(where)}</div></div>
     </div>
     <div class="body">
-      ${low ? `<span class="low">AI nėra tikras – patikrinkite</span>` : ""}
+      ${low ? `<span class="low">${t.lowConf}</span>` : ""}
       <p class="name">${esc(it.pavadinimas)}</p>
       ${it.medziaga ? `<div class="mat">${esc(it.medziaga)}</div>` : ""}
-      ${d.missing ? `<div class="notice"><b>Neturite šio konteinerio.</b> ${esc(d.missing)}</div>` : ""}
-      ${it.paruosimas ? `<div class="row"><b>Paruošimas:</b><span>${esc(it.paruosimas)}</span></div>` : ""}
-      ${d.note ? `<div class="row"><b>Kaip:</b><span>${esc(d.note)}</span></div>` : ""}
-      ${it.paaiskinimas ? `<div class="row"><b>Kodėl:</b><span>${esc(it.paaiskinimas)}</span></div>` : ""}
+      ${d.missing ? `<div class="notice"><b>${t.noBin}</b> ${esc(d.missing)}</div>` : ""}
+      ${it.paruosimas ? `<div class="row"><b>${t.prep}</b><span>${esc(it.paruosimas)}</span></div>` : ""}
+      ${d.note ? `<div class="row"><b>${t.how}</b><span>${esc(d.note)}</span></div>` : ""}
+      ${it.paaiskinimas ? `<div class="row"><b>${t.why}</b><span>${esc(it.paaiskinimas)}</span></div>` : ""}
       ${links ? `<div class="links">${links}</div>` : ""}
     </div>
   </article>`;
 }
 
-function renderResult(data, imgUrl) {
+function renderResult(data, imgUrl, saveHistory = true) {
+  const t = T();
+  lastResult = { data, imgUrl };
   const prev = $("#result-preview");
   if (imgUrl) { prev.src = imgUrl; prev.hidden = false; } else prev.hidden = true;
-  const items = (data.daiktai || []);
+  // Katalogo rezultatas perrašomas pasirinkta kalba (AI atsakymai lieka ta kalba, kuria buvo gauti)
+  const items = (data.catalogIdx != null) ? [(() => { const c = cat(data.catalogIdx); return { pavadinimas: c[0], medziaga: "", kategorija: c[1], pasitikejimas: "aukstas", paruosimas: c[2], paaiskinimas: "" }; })()] : (data.daiktai || []);
   const sure = items.filter((i) => i.pasitikejimas !== "zemas");
   let html = "";
   if (!data.atpazinta || !items.length || !sure.length) {
     html += `
       <div class="unclear">
         <div class="big">🤔</div>
-        <h1>Nepavyko tiksliai atpažinti</h1>
-        <p class="lead">${data.pastaba ? esc(data.pastaba) + " " : ""}Nufotografuokite iš arčiau ir gerame apšvietime, kad matytųsi ženklinimas, arba pasirinkite iš sąrašo.</p>
+        <h1>${t.unclearTitle}</h1>
+        <p class="lead">${data.pastaba ? esc(data.pastaba) + " " : ""}${t.unclearTip}</p>
       </div>`;
-    if (items.length) html += `<h2>Spėjimas</h2>` + items.map(itemCard).join("");
+    if (items.length) html += `<h2>${t.guess}</h2>` + items.map(itemCard).join("");
   } else {
     html += items.map(itemCard).join("");
   }
   html += `<div class="actions">
-    <button class="btn" data-act="list">Nėra teisingo? Pasirinkti iš sąrašo</button>
-    <button class="btn" data-act="retake">Fotografuoti dar kartą</button>
+    <button class="btn" data-act="list">${t.pickList}</button>
+    <button class="btn" data-act="retake">${t.retake}</button>
   </div>
-  <p class="source">Patarimai pagal VASA (vasa.lt) Vilniaus taisykles. AI gali klysti.</p>`;
+  <p class="source">${t.source}</p>`;
   $("#result-list").innerHTML = html;
   show("screen-result");
-  // istorija
-  const hist = store.get("history", []);
-  items.filter((i) => i.pasitikejimas !== "zemas").forEach((i) => hist.unshift({ name: i.pavadinimas, cat: i.kategorija, t: Date.now() }));
-  store.set("history", hist.slice(0, 30));
+  if (saveHistory) {
+    const hist = store.get("history", []);
+    sure.forEach((i) => hist.unshift({ name: i.pavadinimas, cat: i.kategorija, t: Date.now() }));
+    store.set("history", hist.slice(0, 30));
+  }
 }
 
 function renderCatalog(filter = "") {
   const f = norm(filter);
-  const rows = CATALOG.filter((c) => !f || norm(c[0] + " " + c[3]).includes(f));
-  $("#catalog").innerHTML = rows.map((c) => {
+  const rows = CATALOG.map((_, i) => i).filter((i) => !f || norm(catSearch(i)).includes(f));
+  $("#catalog").innerHTML = rows.map((i) => {
+    const c = cat(i);
     const d = destination(c[1], myBins);
-    return `<li><button data-cat="${CATALOG.indexOf(c)}">${swatch(d.bin)}<span>${esc(c[0])}</span></button></li>`;
-  }).join("") || `<li class="hint">Nieko nerasta. Grįžkite ir paklauskite AI tekstu.</li>`;
+    return `<li><button data-cat="${i}">${swatch(d.bin)}<span>${esc(c[0])}</span></button></li>`;
+  }).join("") || `<li class="hint">${T().listEmpty}</li>`;
 }
 
 function catalogResult(idx) {
-  const c = CATALOG[idx];
-  renderResult({ atpazinta: true, daiktai: [{ pavadinimas: c[0], medziaga: "", kategorija: c[1], pasitikejimas: "aukstas", paruosimas: c[2], paaiskinimas: "" }] }, null);
+  renderResult({ atpazinta: true, catalogIdx: idx }, null);
 }
 
 // ---------- Paieška ----------
@@ -297,7 +289,7 @@ const norm = (s) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").tri
 function suggest(q) {
   const f = norm(q);
   if (f.length < 2) return [];
-  return CATALOG.map((c, i) => [c, i]).filter(([c]) => norm(c[0] + " " + c[3]).includes(f)).slice(0, 5);
+  return CATALOG.map((_, i) => i).filter((i) => norm(catSearch(i)).includes(f)).slice(0, 5);
 }
 
 // ---------- Nuotraukos apdorojimas ----------
@@ -318,18 +310,19 @@ async function toJpeg(file) {
 }
 
 async function ask(payload, previewUrl) {
+  const t = T();
   $("#loading-preview").hidden = !previewUrl;
   if (previewUrl) $("#loading-preview").src = previewUrl;
-  $("#loading-text").textContent = previewUrl ? "Atpažįstame daiktus…" : "Ieškome atsakymo…";
+  $("#loading-text").textContent = previewUrl ? t.loadingPhoto : t.loadingText;
   show("screen-loading");
-  const slow = setTimeout(() => ($("#loading-text").textContent = "Dar šiek tiek… tikriname VASA taisykles"), 6000);
+  const slow = setTimeout(() => ($("#loading-text").textContent = t.loadingSlow), 6000);
   try {
-    const r = await fetch("/api/classify", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
-    const data = await r.json().catch(() => ({ error: "Netikėtas serverio atsakymas." }));
-    if (!r.ok || data.error) throw new Error(data.error || "Klaida " + r.status);
+    const r = await fetch("/api/classify", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...payload, lang: LANG }) });
+    const data = await r.json().catch(() => ({ error: t.errServer }));
+    if (!r.ok || data.error) throw new Error(data.error || "Error " + r.status);
     renderResult(data, previewUrl);
   } catch (e) {
-    renderResult({ atpazinta: false, pastaba: navigator.onLine ? e.message : "Nėra interneto ryšio.", daiktai: [] }, previewUrl);
+    renderResult({ atpazinta: false, pastaba: navigator.onLine ? e.message : t.errOffline, daiktai: [] }, previewUrl);
   } finally {
     clearTimeout(slow);
   }
@@ -341,8 +334,22 @@ async function onFile(e) {
   if (!file) return;
   let dataUrl;
   try { dataUrl = await toJpeg(file); }
-  catch { return renderResult({ atpazinta: false, pastaba: "Nepavyko atidaryti nuotraukos (formatas nepalaikomas).", daiktai: [] }, null); }
+  catch { return renderResult({ atpazinta: false, pastaba: T().errPhoto, daiktai: [] }, null); }
   await ask({ image: dataUrl.split(",")[1], mediaType: "image/jpeg" }, dataUrl);
+}
+
+// ---------- Kalbos perjungimas ----------
+function switchLang() {
+  LANG = LANG === "lt" ? "en" : "lt";
+  try { localStorage.setItem("lang", LANG); } catch {}
+  applyStatic();
+  // Perpiešiame tą patį ekraną nauja kalba
+  if (current === "screen-setup") {
+    const checked = [...document.querySelectorAll("#container-list input:checked")].map((i) => i.value);
+    const saved = myBins; myBins = checked; renderSetup(); myBins = saved;
+  } else if (current === "screen-list") { renderCatalog($("#list-filter").value); }
+  else if (current === "screen-result" && lastResult) { renderResult(lastResult.data, lastResult.imgUrl, false); }
+  else if (current === "screen-home" && myBins) { renderHome(); }
 }
 
 // ---------- Įvykiai ----------
@@ -351,6 +358,7 @@ $("#btn-gallery").onclick = () => $("#file-gallery").click();
 $("#file-camera").onchange = onFile;
 $("#file-gallery").onchange = onFile;
 $("#btn-settings").onclick = renderSetup;
+$("#btn-lang").onclick = switchLang;
 $("#btn-home").onclick = () => (myBins ? renderHome() : renderSetup());
 $("#btn-save").onclick = () => {
   myBins = [...document.querySelectorAll("#container-list input:checked")].map((i) => i.value);
@@ -358,7 +366,8 @@ $("#btn-save").onclick = () => {
   renderHome();
 };
 $("#search-input").oninput = (e) => {
-  $("#search-suggest").innerHTML = suggest(e.target.value).map(([c, i]) => {
+  $("#search-suggest").innerHTML = suggest(e.target.value).map((i) => {
+    const c = cat(i);
     const d = destination(c[1], myBins);
     return `<button data-cat="${i}">${swatch(d.bin)}<span>${esc(c[0])}</span></button>`;
   }).join("");
@@ -367,14 +376,14 @@ $("#search-form").onsubmit = (e) => {
   e.preventDefault();
   const q = $("#search-input").value.trim();
   if (!q) return;
-  const exact = CATALOG.findIndex((c) => norm(c[0]) === norm(q));
+  const exact = CATALOG.findIndex((_, i) => norm(cat(i)[0]) === norm(q));
   if (exact >= 0) return catalogResult(exact);
   ask({ text: q }, null);
 };
 $("#list-filter").oninput = (e) => renderCatalog(e.target.value);
 document.addEventListener("click", (e) => {
-  const cat = e.target.closest("[data-cat]");
-  if (cat) return catalogResult(+cat.dataset.cat);
+  const c = e.target.closest("[data-cat]");
+  if (c) return catalogResult(+c.dataset.cat);
   const act = e.target.closest("[data-act]");
   if (!act) return;
   if (act.dataset.act === "retake") $("#file-camera").click();
@@ -382,4 +391,5 @@ document.addEventListener("click", (e) => {
 });
 
 // ---------- Startas ----------
+applyStatic();
 if (myBins) renderHome(); else renderSetup();

@@ -13,36 +13,39 @@
 </head>
 <body>
   <header class="top">
-    <button class="icon-btn" id="btn-home" aria-label="Pradžia">
+    <button class="icon-btn" id="btn-home" aria-label="Kur mesti? Vilnius">
       <img src="icon.svg" alt="" width="28" height="28">
-      <span class="brand">Kur mesti?</span>
+      <span class="brand" data-i18n="brand">Kur mesti?</span>
     </button>
-    <button class="icon-btn" id="btn-settings" aria-label="Mano konteineriai">
+    <div class="top-right">
+      <button class="lang-btn" id="btn-lang" aria-label="Switch to English">EN</button>
+      <button class="icon-btn" id="btn-settings">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M8 6V4h8v2M5 6l1 14h12l1-14"/></svg>
-      <span>Mano konteineriai</span>
+      <span data-i18n="myBins">Mano konteineriai</span>
     </button>
+    </div>
   </header>
 
   <main id="app">
     <!-- 1. Konteinerių pasirinkimas -->
     <section id="screen-setup" class="screen" hidden>
-      <h1>Mano konteineriai</h1>
-      <p class="lead">Pažymėkite, kokie konteineriai yra prie jūsų namų. Spalva nurodyta ant dangčio arba lipduko. Pasirinkimas išsaugomas šiame telefone.</p>
+      <h1 data-i18n="setupTitle">Mano konteineriai</h1>
+      <p class="lead" data-i18n="setupLead">Pažymėkite, kokie konteineriai yra prie jūsų namų. Spalva nurodyta ant dangčio arba lipduko. Pasirinkimas išsaugomas šiame telefone.</p>
       <div id="container-list" class="choice-list"></div>
-      <p class="hint">Mišrių atliekų konteineris yra visur, todėl jo žymėti nereikia.</p>
+      <p class="hint" data-i18n="setupHint">Mišrių atliekų konteineris yra visur, todėl jo žymėti nereikia.</p>
     </section>
 
     <!-- 2. Pradžia -->
     <section id="screen-home" class="screen" hidden>
-      <h1>Ką norite išmesti?</h1>
-      <p class="lead">Nufotografuokite vieną ar kelis daiktus – pasakysime, į kurį konteinerį juos mesti pagal VASA taisykles.</p>
+      <h1 data-i18n="homeTitle">Ką norite išmesti?</h1>
+      <p class="lead" data-i18n="homeLead">Nufotografuokite vieną ar kelis daiktus – pasakysime, į kurį konteinerį juos mesti pagal VASA taisykles.</p>
       <form id="search-form" class="search" role="search">
-        <input id="search-input" type="search" placeholder="Arba įrašykite, pvz. „picos dėžė“" autocomplete="off" enterkeyhint="search" maxlength="120">
-        <button type="submit" class="btn small">Ieškoti</button>
+        <input id="search-input" data-i18n-ph="searchPh" type="search" placeholder="Arba įrašykite, pvz. „picos dėžė“" autocomplete="off" enterkeyhint="search" maxlength="120">
+        <button type="submit" class="btn small" data-i18n="search">Ieškoti</button>
       </form>
       <div id="search-suggest" class="suggest"></div>
       <div id="my-bins" class="my-bins"></div>
-      <h2 id="history-title" hidden>Neseniai tikrinta</h2>
+      <h2 id="history-title" hidden data-i18n="recent">Neseniai tikrinta</h2>
       <ul id="history" class="history"></ul>
     </section>
 
@@ -61,8 +64,8 @@
 
     <!-- 5. Sąrašas -->
     <section id="screen-list" class="screen" hidden>
-      <h1>Pasirinkite iš sąrašo</h1>
-      <input id="list-filter" type="search" placeholder="Filtruoti, pvz. „butelis“" autocomplete="off">
+      <h1 data-i18n="listTitle">Pasirinkite iš sąrašo</h1>
+      <input id="list-filter" data-i18n-ph="listFilterPh" type="search" placeholder="Filtruoti, pvz. „butelis“" autocomplete="off">
       <ul id="catalog" class="catalog"></ul>
     </section>
   </main>
@@ -71,20 +74,21 @@
   <nav class="bottom" id="bottom-bar">
     <button class="btn ghost" id="btn-gallery">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>
-      Galerija
+      <span data-i18n="gallery">Galerija</span>
     </button>
     <button class="btn primary" id="btn-camera">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h3l2-3h6l2 3h3a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="4"/></svg>
-      Fotografuoti
+      <span data-i18n="camera">Fotografuoti</span>
     </button>
   </nav>
   <nav class="bottom" id="setup-bar" hidden>
-    <button class="btn primary wide" id="btn-save">Išsaugoti</button>
+    <button class="btn primary wide" id="btn-save" data-i18n="save">Išsaugoti</button>
   </nav>
 
   <input type="file" id="file-camera" accept="image/*" capture="environment" hidden>
   <input type="file" id="file-gallery" accept="image/*" hidden>
 
+  <script src="i18n.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
