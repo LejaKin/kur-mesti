@@ -57,9 +57,11 @@ Teisingi atsakymai pagal VASA surašyti `tests/text-cases.json` ir `tests/tikri-
 
 ## Saugumas ir kaina
 
-- API raktas laikomas tik Vercel aplinkos kintamajame, į naršyklę jis nepatenka.
+- API raktas laikomas tik Vercel aplinkos kintamajame, į naršyklę jis nepatenka. Į GitHub raktas niekada nebuvo įkeltas: vietinis `.env` failas įrašytas į `.gitignore`.
 - Vienam IP leidžiama iki 20 užklausų per 10 min. Išlaidų riba nustatoma Anthropic konsolėje (10 USD).
-- Taisyklių failas kešuojamas (prompt caching), todėl pakartotinės užklausos pigesnės. Viena nuotrauka kainuoja apie 0,01–0,03 USD.
+- Nuotraukos niekur nesaugomos: serveris jas tik perduoda AI ir grąžina atsakymą. Testavimo nuotraukos šioje viešoje kopijoje neskelbiamos.
+- Taisyklių failas kešuojamas (prompt caching), todėl pakartotinės užklausos pigesnės.
+- **Faktinė kaina: viena užklausa ≈ 1,6 euro cento (0,016 €).** Visi testai ir bandymai (~165 užklausos) kainavo 2,97 USD ≈ 2,71 EUR (`docs/sanaudos.md`).
 
 ## Failai
 
